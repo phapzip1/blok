@@ -1,0 +1,17 @@
+---
+title: "Hello"
+subtitle: "This is my first blog"
+description:  "World"
+updatedAt: Friday, December 12, 2025 20:33:12
+---
+# Hello World
+
+
+import BlogLayout from "@/components/content-layout";
+export default ({ children }) => {
+    return (
+        <BlogLayout metadata={frontmatter}>
+            {children}
+        </BlogLayout>
+    );
+}
