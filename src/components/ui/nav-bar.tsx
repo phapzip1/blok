@@ -10,10 +10,10 @@ const NavBar: React.FC = () => {
             <div className="flex flex-row gap-8 items-center">
                 <Logo />
                 <span className="hidden md:flex flex-row items-center gap-8 ">
-                    <Link href="/post" className="font-medium">
+                    <Link href="/post" className="font-medium underline-offset-4 decoration-2 hover:underline">
                         Post
                     </Link>
-                    <Link href="/work" className="font-medium">
+                    <Link href="/work" className="font-medium underline-offset-4 decoration-2 hover:underline">
                         Work
                     </Link>
                 </span>

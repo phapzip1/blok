@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { SiGithub, SiFacebook } from "@icons-pack/react-simple-icons";
 import BlogList from "@/components/ui/blog-list";
+import { buttonVariant } from "@/components/ui/button";
 
 const HomePage: React.FC = async () => {
     return (
-        <div className="max-w-2xl mx-auto">
-            {/* TIMELINE */}
+        <div className="max-w-2xl mx-auto mt-14">
+            <div className="mx-auto p-2 rounded-md w-60 aspect-3/4 mb-2 bg-background font-medium text-center flex items-center justify-center">
+                This may be my future avatar, for now at least there a placeholder there.
+            </div>
+            {/* BRIEF */}
             <h1 className="relative font-semibold text-lg w-fit mb-1">
                 Brief
                 <span className="absolute w-full -z-1 h-1.5 left-0 -bottom-1" />
@@ -32,17 +36,17 @@ const HomePage: React.FC = async () => {
                 <span className="absolute w-full -z-1 h-1.5 left-0 -bottom-1" />
             </h1>
             <ul className="flex flex-col gap-2.5">
-                <Link href="https://github.com/phapzip1" className="flex flex-row items-center-safe justify-center w-fit py-1.5 px-5 gap-2 rounded-md bg-background">
+                <Link href="https://github.com/phapzip1" className={buttonVariant()}>
                     <SiGithub />
                     <span className="font-medium">@Phapzip1</span>
                 </Link>
-                <Link href="https://facebook.com/phapkogay" className="flex flex-row items-center-safe justify-center w-fit py-1.5 px-5 gap-2 rounded-md bg-background">
+                <Link href="https://facebook.com/phapkogay" className={buttonVariant()}>
                     <SiFacebook />
                     <span className="font-medium">Phap Nguyen</span>
                 </Link>
             </ul>
             {/* POSTS */}
-            <h1 className="relative font-semibold text-lg w-fit mt-5">
+            <h1 className="relative font-semibold text-lg w-fit mt-5 mb-1">
                 Post
                 <span className="absolute w-full -z-1 h-1.5 left-0 -bottom-1" />
             </h1>
