@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
 import Image from "next/image";
 
 const Logo: React.FC = () => {
     return (
-        <Link href="/" className={buttonVariants({ variant: "secondary", className: "flex flex-row items-center gap-2" })}>
-            <p className="text-xl">Yellow Banana</p>
+        <Link href="/" className="flex flex-row rounded-md items-center-safe justify-center min-w-50 gap-3 py-1 bg-background-light">
+            <p className="text-xl font-bold">Yellow Banana</p>
             <Image src="/banana.svg" alt="logo" width={32} height={32} />
         </Link>
     );

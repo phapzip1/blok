@@ -1,5 +1,5 @@
-import Footer from "@/components/footer";
-import NavBar from "@/components/nav-bar";
+import Footer from "@/components/ui/footer";
+import NavBar from "@/components/ui/nav-bar";
 
 const IndexLayout : React.FC<{children: React.ReactNode}> = ({children}) => {
     return (
