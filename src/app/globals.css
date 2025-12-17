@@ -7,6 +7,7 @@
   --color-background-dark: var(--background-dark);
   --color-background: var(--background);
   --color-background-light: var(--background-light);
+  --color-background-lighter: oklch(from var(--background-light) calc(l + 0.1) c h);
   --color-text: var(--color-text);
   --color-muted: var(--text-muted);
   --color-highlight: var(--highlight);

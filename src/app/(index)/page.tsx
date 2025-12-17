@@ -37,11 +37,11 @@ const HomePage: React.FC = async () => {
             </h1>
             <ul className="flex flex-col gap-2.5">
                 <Link href="https://github.com/phapzip1" className={buttonVariant()}>
-                    <SiGithub />
+                    <SiGithub className="size-5"/>
                     <span className="font-medium">@Phapzip1</span>
                 </Link>
                 <Link href="https://facebook.com/phapkogay" className={buttonVariant()}>
-                    <SiFacebook />
+                    <SiFacebook className="size-5"/>
                     <span className="font-medium">Phap Nguyen</span>
                 </Link>
             </ul>
