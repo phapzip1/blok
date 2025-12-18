@@ -14,12 +14,12 @@ const RootLayout = ({
 }>) => {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
-        <body className="antialiased">
+      <html lang="en" suppressHydrationWarning >
+        <body className="antialiased bg-background-light dark:bg-background-dark">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
-            enableSystem
+            // enableSystem
             disableTransitionOnChange
           >
             {children}
