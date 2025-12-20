@@ -36,7 +36,7 @@ const Button: React.FC<
                 data-slot="button"
                 data-variant={variant}
                 data-size={size}
-                className={cn(buttonVariant({ variant, size }), className)}
+                className={cn(buttonVariant({ variant, size }))}
                 {...props}
             />
         );

@@ -43,29 +43,59 @@ const Popover: React.FC<PopoverProps> = ({ opened = false, children }) => {
 }
 
 const PopoverContent: React.FC<React.ComponentPropsWithRef<"div">> = ({ children, className, ...props }) => {
-    const { opened, triggerEle } = usePopover();
+    const { opened, triggerEle, setOpened } = usePopover();
     const [rect, setRect] = React.useState<DOMRect>();
+    const elementRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        if (triggerEle) {
-            const observer = new IntersectionObserver((entries) => {
-                for (const entry of entries) {
-                    setRect(() => entry.target.getBoundingClientRect());
-                    break;
+        if (triggerEle && elementRef.current && opened) {
+            const resizeCallback = () => {
+                setRect(() => triggerEle.getBoundingClientRect());
+            }
+
+            const scrollCallback = () => {
+                setRect(() => triggerEle.getBoundingClientRect());
+            }
+
+            const clickCallback = (pe: any) => {
+                const clickedOutside = !elementRef.current?.contains(pe.target);
+                const clickedTrigger = triggerEle.contains(pe.target);
+
+                if (clickedOutside && !clickedTrigger) {
+                    setOpened(() => false);
                 }
-            });
+            }
 
-            observer.observe(triggerEle);
+            window.addEventListener("resize", resizeCallback);
+            window.addEventListener("scroll", scrollCallback);
+            window.addEventListener("mousedown", clickCallback);
 
-            return () => observer.disconnect();
+            setRect(() => triggerEle.getBoundingClientRect());
+
+
+            return () => {
+                window.removeEventListener("resize", resizeCallback);
+                window.removeEventListener("scroll", scrollCallback);
+                window.removeEventListener("mousedown", clickCallback);
+            }
         }
-    }, [triggerEle]);
+    }, [triggerEle, opened, elementRef.current]);
+
+    const computedRect = {
+        top: rect?.top || 0,
+        bottom: rect?.bottom || 0,
+        left: rect?.left || 0,
+        right: rect?.right || 0,
+        width: rect?.width || 0,
+        height: rect?.height || 0,
+    };
+
 
     return opened && createPortal(
-        <div {...props} style={{
-            top: rect?.bottom || 0,
-            left: rect?.left || 0,
-        }} className={cn("fixed z-20")}>
+        <div {...props} ref={elementRef} style={{
+            top: computedRect.bottom + 2,
+            right: window.innerWidth - computedRect.right,
+        }} className={cn("fixed z-20 overflow-visible", className)}>
             {children}
         </div>,
         document.getElementById("portal") || document.body,
