@@ -1,7 +1,13 @@
-import { Logger } from "pino"
+import { Logger } from "pino";
 
 declare global {
     var logger: Logger | undefined;
+
+    var metrics: {
+        registry?: {
+            metrics: () => Promise<string>;
+        };
+    } | undefined;
 }
 
 const register = async () => {
@@ -19,8 +25,21 @@ const register = async () => {
             }
         });
 
+
         const logger = pino(transport);
         globalThis.logger = logger;
+
+        const { Registry, collectDefaultMetrics } = await import("prom-client");
+
+        const promRegistry = new Registry();
+
+        collectDefaultMetrics({
+            register: promRegistry,
+        });
+
+        globalThis.metrics = {
+            registry: promRegistry,
+        };
     }
 }
 
