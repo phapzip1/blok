@@ -4,14 +4,15 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+    /* config options here */
+    pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+    output: "standalone",
 };
 
 const withMdx = createMDX({
-  options: {
-    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter]
-  }
+    options: {
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter]
+    }
 });
 
 export default withMdx(nextConfig);
