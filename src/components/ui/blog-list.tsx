@@ -5,7 +5,7 @@ const BlogList: React.FC = async () => {
     const posts = await getAllPosts();
     
     return (
-        <ul className="grid grid-cols-2 gap-x-2 gap-y-4">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-4">
             {posts.map(({ metadata, slug }) => {
                 return (
                     <li key={slug} className="rounded-md p-4 bg-background">
